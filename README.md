@@ -1,4 +1,4 @@
-# University of Montreal - NSC6084 class project
+# University of Montreal - NSC6084 course project
 ## Can a contrast invariance model account for bandwidth invariance in the primary visual cortex ?
 ## Repository structure
 Model development will first start in the ./python and will then be translated in MATLAB under the ./matlab folder
