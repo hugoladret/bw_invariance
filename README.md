@@ -19,15 +19,27 @@ Success in this project would consist in showing that we can achieve an invarian
 
 ### References
 [1] Hubel, D. H., & Wiesel, T. N. (1959). Receptive fields of single neurones in the cat's striate cortex. The Journal of physiology, 148(3), 574.
+
 [2] Hubel, D. H., & Wiesel, T. N. (1962). Receptive fields, binocular interaction and functional architecture in the cat's visual cortex. The Journal of physiology, 160(1), 106.
+
 [3] Skottun, B. C., Bradley, A., Sclar, G., Ohzawa, I., & Freeman, R. D. (1987). The effects of contrast on visual orientation and spatial frequency discrimination: a comparison of single cells and behavior. Journal of neurophysiology, 57(3), 773-786.
+
 [4] Finn, I. M., Priebe, N. J., & Ferster, D. (2007). The emergence of contrast-invariant orientation tuning in simple cells of cat visual cortex. Neuron, 54(1), 137-152.
+
 [5] Hansel, D., & Van Vreeswijk, C. (2002). How noise contributes to contrast invariance of orientation tuning in cat visual cortex. Journal of Neuroscience, 22(12), 5118-5128.
+
 [6] Kremkow, J., Perrinet, L. U., Monier, C., Alonso, J. M., Aertsen, A., Frégnac, Y., & Masson, G. S. (2016). Push-pull receptive field organization and synaptic depression: mechanisms for reliably encoding naturalistic stimuli in V1. Frontiers in neural circuits, 10, 37.
+
 [7] Troyer, T. W., Krukowski, A. E., Priebe, N. J., & Miller, K. D. (1998). Contrast-invariant orientation tuning in cat visual cortex: thalamocortical input tuning and correlation-based intracortical connectivity. Journal of Neuroscience, 18(15), 5908-5927.
+
 [8] Leon, P. S., Vanzetta, I., Masson, G. S., & Perrinet, L. U. (2012). Motion clouds: model-based stimulus synthesis of natural-like random textures for the study of motion perception. Journal of neurophysiology, 107(11), 3217-3226.
+
 [9] Olshausen, B. A., & Field, D. J. (2005). How close are we to understanding V1?. Neural computation, 17(8), 1665-1699.
+
 [10] Carandini, M. (2007). Melting the iceberg: contrast invariance in visual cortex. Neuron, 54(1), 11-13.
+
 [11] Kouh, M., & Poggio, T. (2008). A canonical neural circuit for cortical nonlinear operations. Neural computation, 20(6), 1427-1451.
+
 [12] Carandini, M., & Heeger, D. J. (2012). Normalization as a canonical neural computation. Nature Reviews Neuroscience, 13(1), 51-62.
+
 [13] Zhu, M., & Rozell, C. J. (2013). Visual nonclassical receptive field effects emerge from sparse coding in a dynamical system. PLoS Comput Biol, 9(8), e1003191.
