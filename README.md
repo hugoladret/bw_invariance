@@ -1,7 +1,29 @@
 # University of Montreal - NSC6084 course project
 ## Can a contrast invariance model account for bandwidth invariance in the primary visual cortex ?
 ## Repository structure
-Model development will first start in the ./python and will then be translated in MATLAB under the ./matlab folder
+Model development will first start in the ./python and will then be translated in MATLAB under the ./matlab folder. 
+
+## TODO :
+[X] Implement basic LIF simulation 
+
+[X] Implement grating-like curve stimulation 
+
+[X] Implement power-law rectification
+
+[X] Implement trial variability smoothing 
+
+[X] Reproduce contrast results 
+
+[ ] Produce bandwidth results 
+
+[ ] Produce bandwidth / contrast results 
+
+[ ] (electrophy) analyse bandwidth/contrast results 
+
+[ ] translate to matlab 
+
+[ ] ???
+
 
 ## Project description
 The goal of this project is to model the change of neuronal activity of the primary visual cortex (V1) in response to certain modulations of the visual input. It is known that orientation selective activity [1,2] in V1 is invariant to the contrast of visual stimulations [3], an experimental result which has been extensively modeled from single neuron [4,5] to circuits [6,7]. We have original experimental data that shows a similar activity pattern for variations of bandwidth of visual stimulations [8]. Hence, we wish to use the theoretical framework provided by contrast invariance models to investigate the mechanisms underlying bandwidth invariance
