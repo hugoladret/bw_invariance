@@ -36,6 +36,7 @@ def simulate(input_tc,
                 Vm[i2] = Vm[i2-1] + (-Vm[i2-1] + I[i2]*Rm + noise) / tau_m * dt # we can simplify everything with v_rest = 0
                 if Vm[i2] >= Vth and t_refrac > refrac_time: #if above threshold and we can spike
                     spiketimes.append(i2)
+                    Vm[i2-1] = 1.
                     Vm[i2] = 0.
                     t_refrac = 0.
                     

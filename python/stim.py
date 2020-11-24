@@ -25,9 +25,9 @@ def gaussian(x, mu, sig):
 def power_law(k,x,a) :
     return k*x**a
 
-def generate_stim(mu = 0., sig = .35, max_amp = 1.) :
+def generate_stim(mu = 0., sig = .35, max_amp = 1., norm = False) :
     
-    xs = np.linspace(-3, 3, 60)
+    xs = np.linspace(-3, 3, 100)
     ys = gaussian(x = xs, mu = mu, sig = sig)
     ys = scale_values(ys, max_amp, 0)
 

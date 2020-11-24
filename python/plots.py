@@ -80,7 +80,7 @@ def plot_spike_tc(ax,
     ax.legend()
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
-    return ax
+    #return ax
 
 def plot_stimulation(ax, input_tc,lab):
     

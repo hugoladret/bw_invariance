@@ -12,17 +12,15 @@ Model development will first start in the ./python and will then be translated i
 
 [X] Implement trial variability smoothing 
 
-[X] Reproduce contrast results 
+[X] Reproduce contrast results, spikes
 
 [ ] Produce bandwidth results 
 
-[ ] Produce bandwidth / contrast results 
+[ ] Produce bandwidth + contrast results 
 
-[ ] (electrophy) analyse bandwidth/contrast results 
+[ ] (electrophy) analyze bandwidth/contrast results 
 
 [ ] translate to matlab 
-
-[ ] ???
 
 
 ## Project description
