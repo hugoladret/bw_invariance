@@ -16,7 +16,7 @@ from tqdm import tqdm
 ## Stimulation parameters
 n_pars = 3 #number of parameters, either contrast or bandwidth
 contrasts = np.linspace(1., 8., n_pars) #stimulation contrast, max = 5 is a good idea
-bandwidths = np.linspace(.2, .6, n_pars) # stimulation bandwidth, it's sigma of gaussian
+bandwidths = np.linspace(.3, .6, n_pars) # stimulation bandwidth, it's sigma of gaussian
 
 ## Finn parameters
 k = 3.5 # power law scale 
