@@ -8,47 +8,7 @@ Created on Thu Nov 19 18:06:31 2020
 import numpy as np
 import matplotlib.pyplot as plt
 import fit
-
-def plot_single_trial(ax,
-                      time, Vm, spiketimes) :
-
-    ax.plot(time, Vm, color = 'k')
-    for st in spiketimes :
-        ax.plot((time[st-1], time[st-1]), (-51, 20), c = 'k')
-    
-    ax.axhline(-50, color = 'gray', linestyle = '--', zorder = -1)
-    
-    ax.set_title('Single trial example')
-    ax.set_ylabel('Membrane potential (mV)')
-    ax.set_xlabel('Time (ms')
-    
-    ax.set_xlim(0, max(time))
-    
-    #ax.legend()
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    return ax
-
-
-def plot_vm_tc(ax,
-               all_vms, tot_steps, 
-               lab) :
-    
-
-    avg_vm = np.mean(all_vms, axis = 1)
-    #mean_2nd = np.mean(avg_vm[:,int(.25*tot_steps):int(.5*tot_steps)], axis = -1)
-    mean_2nd = np.mean(avg_vm, axis = -1)
-    
-    ax.plot(1/mean_2nd, label = lab)
-    
-    ax.set_title('Membrane tuning curve')
-    ax.set_ylabel('Membrane potential (mV)')
-    ax.set_xlabel('Orientation')
-    
-    ax.legend()
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    return ax
+import stim
 
 
 def plot_spike_tc(ax,
@@ -66,32 +26,37 @@ def plot_spike_tc(ax,
                          tc_pars['mu'], tc_pars['sig'], tc_pars['scale'])
     
     ax.plot(np.linspace(-3, 3, 1000),
-            fit_tc, color = col)
+            fit_tc, color = col, label = lab)
     ax.scatter(np.linspace(-3, 3, len(mean_spiketrains)),
-               mean_spiketrains, color = col, label = lab,
-               marker = 'X', s = 5.)
-    
-    print(tc_pars['sig'])
-    
-    ax.set_title('Spiking tuning curve')
-    ax.set_ylabel('Firing rate(spikes)')
-    ax.set_xlabel('Orientation')
-    
-    ax.legend()
-    ax.spines['right'].set_visible(False)
-    ax.spines['top'].set_visible(False)
-    #return ax
+               mean_spiketrains, color = col,
+               marker = 'X', s = 7.)
 
-def plot_stimulation(ax, input_tc,lab):
     
-    ax.plot(input_tc, label = lab)
-    
-    ax.set_title('Input')
-    ax.set_ylabel('Input value')
-    ax.set_xlabel('Orientation')
+    ax.set_ylabel('Firing rate(spikes)', fontsize = 14)
+    ax.set_xlabel('Orientation', fontsize = 14)
     
     ax.legend()
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
+    
+    ax.tick_params(axis='both', which='major', labelsize=12)
+    
+    
+    return tc_pars['sig']
+
+def plot_stimulation(ax, input_tc,lab,col
+                     ):
+    
+    input_tc = stim.scale_values(input_tc, 1, 0.)
+    ax.plot(input_tc, label = lab, color = col)
+    
+    ax.set_ylabel('Normalized input value', fontsize = 14)
+    ax.set_xlabel('Orientation', fontsize = 14)
+    
+    ax.spines['right'].set_visible(False)
+    ax.spines['top'].set_visible(False)
+    
+    ax.tick_params(axis='both', which='major', labelsize=12)
+    
     return ax
     

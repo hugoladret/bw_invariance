@@ -38,7 +38,7 @@ for i, bw in enumerate(bandwidths) :
     # Compute the right part 
     new_pwlaw = stim.power_law(k = np.max(inp), 
                                 x = np.linspace(1, 3, len(inp)//2),
-                                a = -4.5*np.exp(bw))
+                                a = -3.5*np.exp(bw))
     mult = inp[len(inp)//2:]-(1/new_pwlaw)
     mult[mult<0] = 0
     

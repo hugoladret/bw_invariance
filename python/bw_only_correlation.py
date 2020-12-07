@@ -20,6 +20,10 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
+import matplotlib
+matplotlib.rcParams['pdf.fonttype'] = 42
+matplotlib.rcParams['ps.fonttype'] = 42
+
 # Parameters
 ## Simulation parameters 
 T = 50 # total simtime ; ms
@@ -35,9 +39,9 @@ refrac_time = 1. # refractory period (msec)
 Vth = 1. # spike threshold (V)
 
 ## Stimulation parameters
-n_pars = 3 #number of parameters, either contrast or bandwidth
+n_pars = 20 #number of parameters, either contrast or bandwidth
 contrasts = np.linspace(1., 8., n_pars) #stimulation contrast, max = 5 is a good idea
-bandwidths = np.linspace(.2, .6, n_pars) # stimulation bandwidth, it's sigma of gaussian
+bandwidths = np.linspace(.2, .8, n_pars) # stimulation bandwidth, it's sigma of gaussian
 
 ## Finn parameters
 k = 3.5 # power law scale 
@@ -50,8 +54,8 @@ k_bw = 3.5 # other neurons' power law scale
 a_bw = -4.5 # multiplier of bw on other neurons
 
 ## Plotting parameters
-labels = contrasts
-colors = plt.cm.gray(np.linspace(.8, .3, len(contrasts)))
+labels = bandwidths #rescale for actual stim values
+colors = plt.cm.inferno(np.linspace(.9, .2, len(bandwidths))) #tc colormap
 
 # Initialization
 tot_steps = int(T/dt) # length of the time vector 
@@ -61,15 +65,15 @@ time = np.linspace(0, T+dt, tot_steps) # time vector
 # Stimulation, contrasts
 pwlaw = stim.power_law(k = k, x = contrasts, a = a)
 input_tcs = []
-for i, max_amp in enumerate(contrasts) :
-    inp = stim.generate_stim(mu = 0., sig = .4, max_amp = max_amp)
-    inp *= pwlaw[i]
-    input_tcs.append(inp)
-    
-# for i, bw in enumerate(bandwidths) :
-#     inp = stim.generate_stim(mu = 0., sig = bw, max_amp = np.max(contrasts))
+# for i, max_amp in enumerate(contrasts) :
+#     inp = stim.generate_stim(mu = 0., sig = .4, max_amp = max_amp)
 #     inp *= pwlaw[i]
 #     input_tcs.append(inp)
+    
+for i, bw in enumerate(bandwidths) :
+    inp = stim.generate_stim(mu = 0., sig = bw, max_amp = np.max(contrasts))
+    inp *= pwlaw[i]
+    input_tcs.append(inp)
 
 # Simulation
 out_vms, out_spikes = [], []
@@ -86,37 +90,31 @@ for inp in tqdm(input_tcs, 'Simulating') :
 out_vms = np.asarray(out_vms) # shape stims, ori, repeats, timesteps
 out_spikes = np.asarray(out_spikes) # shape stims, ori, repeats
 
-
-
-# Plotting    
+hwhhs  = []
+fig, ax = plt.subplots(figsize = (8,6))
 plot_spike = True 
 if plot_spike:
     fig, ax = plt.subplots(figsize = (8,6))
     for i in range(n_pars) :
-        plots.plot_spike_tc(ax = ax, 
+        hwhh = plots.plot_spike_tc(ax = ax, 
                             all_spiketimes = out_spikes[i,:,:],
                             lab = labels[i], col = colors[i])
+        hwhhs.append(hwhh)
 
-plot_stim = True
-if plot_stim :
-    fig, ax = plt.subplots(figsize = (8,6))
-    for i in range(n_pars) :
-        plots.plot_stimulation(ax, input_tc = input_tcs[i],
-                               lab = labels[i])
-        
 
-# plot_st = False
-# if plot_st :
-#     fig, ax = plt.subplots(figsize = (8,6))
-#     plots.plot_single_trial(ax = ax,
-#                             time = time, Vm = out_vms[-1, 50, 0, :], 
-#                             spiketimes = out_spikes[-1, 50, 0])
 
-# plot_vm = False 
-# if plot_vm :
-#     fig, ax = plt.subplots(figsize = (8,6))
-#     for i in range(len(contrasts)) :
-#         plots.plot_vm_tc(ax = ax,
-#                           all_vms = out_vms[i,:,:,:],
-#                           tot_steps = tot_steps,
-#                           lab = labels[i])
+fig, ax = plt.subplots(figsize = (8,6))
+coef= np.polyfit(bandwidths, hwhhs,1)
+poly1d_fn = np.poly1d(coef)
+ax.scatter(bandwidths, hwhhs, color = 'k')
+ax.plot(bandwidths, poly1d_fn(bandwidths), color = 'k', linestyle = '--')
+
+ax.legend()
+ax.spines['right'].set_visible(False)
+ax.spines['top'].set_visible(False)
+
+ax.tick_params(axis='both', which='major', labelsize=12)
+ax.set_ylabel('Orientation bandwidth', fontsize = 14)
+ax.set_xlabel('Tuning curve bandwidth', fontsize = 14)
+
+fig.savefig('./figs/fig2c.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
