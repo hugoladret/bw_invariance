@@ -13,7 +13,7 @@ import stim
 
 def plot_spike_tc(ax,
                   all_spiketimes,
-                  lab, col) :
+                  lab, col, ls = '-') :
 
     mean_spiketrains = []
     std_spiketrains = []
@@ -26,16 +26,19 @@ def plot_spike_tc(ax,
                          tc_pars['mu'], tc_pars['sig'], tc_pars['scale'])
     
     ax.plot(np.linspace(-3, 3, 1000),
-            fit_tc, color = col, label = lab)
-    ax.scatter(np.linspace(-3, 3, len(mean_spiketrains)),
-               mean_spiketrains, color = col,
-               marker = 'X', s = 7.)
+            fit_tc, color = col, label = lab if ls == '-' else None,
+            linestyle = ls)
+    if ls == '-':
+        ax.scatter(np.linspace(-3, 3, len(mean_spiketrains)),
+                   mean_spiketrains, color = col,
+                   marker = 'X', s = 7.)
 
+    ax.legend()
     
     ax.set_ylabel('Firing rate(spikes)', fontsize = 14)
     ax.set_xlabel('Orientation', fontsize = 14)
     
-    ax.legend()
+    
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     
