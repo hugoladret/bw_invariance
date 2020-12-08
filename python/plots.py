@@ -50,7 +50,7 @@ def plot_spike_tc(ax,
 def plot_stimulation(ax, input_tc,lab,col
                      ):
     
-    input_tc = stim.scale_values(input_tc, 1, 0.)
+    #input_tc = stim.scale_values(input_tc, 1, 0.)
     ax.plot(input_tc, label = lab, color = col)
     
     ax.set_ylabel('Normalized input value', fontsize = 14)

@@ -57,7 +57,7 @@ def generate_gratings(n_sins, imsize, div):
     return grating/div
     
 
-# Generate the MotionClouds (fig 1d)
+# Generate the MotionClouds
 fig, axs = plt.subplots(figsize = (16,8), ncols = len(B_thetas), nrows = 1,
                         gridspec_kw = {'wspace':0.01, 'hspace':0.05})
 
@@ -79,7 +79,7 @@ for ibt in range(0,len(B_thetas)) :
         ax.spines[edge].set_color(colors[ibt])
         ax.spines[edge].set_linewidth(2)  
         
-fig.savefig('./figs/fig1d.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
+fig.savefig('./figs/fig1e.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
 
 
 # Generate the MotionClouds distributions (fig1e)
@@ -122,7 +122,7 @@ ax.spines['top'].set_visible(False)
 ax.set_ylim(-.05, 1.1)
 fig.legend(ncol = 1, fontsize = 12, frameon = True, title = r'B$_\theta$')
 fig.tight_layout()
-fig.savefig('./figs/fig1e.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
+fig.savefig('./figs/fig1f.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
 
 
 
