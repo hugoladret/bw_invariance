@@ -102,19 +102,19 @@ if plot_spike:
         hwhhs.append(hwhh)
 
 
-
+xs = stim.scale_values(contrasts, 1, 0)
 fig, ax = plt.subplots(figsize = (8,6))
-coef= np.polyfit(bandwidths, hwhhs,1)
+coef= np.polyfit(xs, hwhhs,1)
 poly1d_fn = np.poly1d(coef)
-ax.scatter(bandwidths, hwhhs, color = 'k')
-ax.plot(bandwidths, poly1d_fn(bandwidths), color = 'k', linestyle = '--')
-ax.set_ylim(.3, .8)
+ax.scatter(xs, hwhhs, color = 'k')
+ax.plot(xs, poly1d_fn(xs), color = 'k', linestyle = '--')
+ax.set_ylim(.0, 1.)
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
 ax.tick_params(axis='both', which='major', labelsize=12)
-ax.set_ylabel('Orientation bandwidth', fontsize = 14)
-ax.set_xlabel('Tuning curve bandwidth', fontsize = 14)
+ax.set_xlabel('Contrast', fontsize = 14)
+ax.set_ylabel('Norm. tuning curve bandwidth', fontsize = 14)
 
 fig.savefig('./figs/fig1d.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)

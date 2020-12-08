@@ -94,7 +94,6 @@ fig, ax = plt.subplots(figsize = (8,6))
 # they are on the same illustrative range (can't do 0 in a real VM)
 B_thetas = np.linspace(np.pi/2, 0.115 , 3) / 2.5
 lab_bt = np.linspace(np.pi/2, 0. , 8) / 2.5
-colors = plt.cm.inferno(np.linspace(.9, .2, len(B_thetas))) #tc colormap
 
 labels = [r'$\frac{\pi}{5}$',
           r'$\frac{\pi}{2.5}$',
@@ -111,16 +110,16 @@ for i, bt in enumerate(B_thetas) :
            label = labels[i])
 
 ax.set_xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi])
-ax.set_xticklabels(['-90°', '-45°', r'$\theta_{0}$', '+45°', '+90°'])
+ax.set_xticklabels(['-90', '-45', r'$\theta_{0}$', '+45', '+90'])
 ax.tick_params(axis='both', labelsize=12)
 
-ax.set_xlabel('Stimulation ', fontsize = 14)
+ax.set_xlabel('Stimulation orientation (°)', fontsize = 14)
 ax.set_ylabel('Distribution energy (u.a.)', fontsize = 14)
 
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 ax.set_ylim(-.05, 1.1)
-fig.legend(ncol = 1, fontsize = 12, frameon = True, title = r'B$_\theta$')
+fig.legend(ncol = 1, fontsize = 14, frameon = True, title = r'B$_\theta$')
 fig.tight_layout()
 fig.savefig('./figs/fig1f.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
 

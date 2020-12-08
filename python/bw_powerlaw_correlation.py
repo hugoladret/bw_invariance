@@ -117,9 +117,9 @@ for i_bw, a_bw in enumerate(a_bws) :
     poly1d_fn = np.poly1d(coef)
     ax.scatter(bandwidths, all_hwhhs[i_bw], color = colors[i_bw])
     ax.plot(bandwidths, poly1d_fn(bandwidths), color = colors[i_bw],
-            linestyle = '--', label = a_bw)
+            linestyle = '--', label = -a_bw)
 
-ax.legend(title = 'Exponant strength')
+ax.legend(title = 'Exponant')
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 

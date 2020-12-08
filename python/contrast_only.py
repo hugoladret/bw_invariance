@@ -54,7 +54,7 @@ k_bw = 3.5 # other neurons' power law scale
 a_bw = -4.5 # multiplier of bw on other neurons
 
 ## Plotting parameters
-labels = stim.scale_values(contrasts, 1, .125) #rescale for actual stim values
+labels = stim.scale_values(contrasts, 1, .1) #rescale for actual stim values
 colors = plt.cm.gray(np.linspace(.8, .3, len(contrasts)))
 
 # Initialization
@@ -99,6 +99,11 @@ if plot_stim :
     for i in range(n_pars) :
         plots.plot_stimulation(ax, input_tc = input_tcs[i],
                                lab = labels[i], col = colors[i])
+    ax.set_xticks([0, 25, 50, 75, 100])
+    ax.set_xticklabels(['-90', '-45', r'$\theta_{0}$', '+45', '+90'])
+    ax.tick_params(axis='both', labelsize=12)
+    ax.set_xlabel('Stimulation orientation (°)', fontsize = 14)
+    
     fig.savefig('./figs/fig1b.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
         
 plot_spike = True 
@@ -108,4 +113,8 @@ if plot_spike:
         plots.plot_spike_tc(ax = ax, 
                             all_spiketimes = out_spikes[i,:,:],
                             lab = labels[i], col = colors[i])
+    ax.set_xticks([-3, -1.5, 0, 1.5, 3])
+    ax.set_xticklabels(['-90', '-45', r'$\theta_{0}$', '+45', '+90'])
+    ax.tick_params(axis='both', labelsize=12)
+    ax.set_xlabel('Stimulation orientation (°)', fontsize = 14)
     fig.savefig('./figs/fig1c.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)

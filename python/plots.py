@@ -35,14 +35,14 @@ def plot_spike_tc(ax,
 
     ax.legend()
     
-    ax.set_ylabel('Firing rate(spikes)', fontsize = 14)
-    ax.set_xlabel('Orientation', fontsize = 14)
+    ax.set_ylabel('Firing rate(spikes)', fontsize = 18)
+    ax.set_xlabel('Orientation', fontsize = 18)
     
     
     ax.spines['right'].set_visible(False)
     ax.spines['top'].set_visible(False)
     
-    ax.tick_params(axis='both', which='major', labelsize=12)
+    ax.tick_params(axis='both', which='major', labelsize=14)
     
     
     return tc_pars['sig']

@@ -4,6 +4,7 @@
 Code can be found under the ./python folder. The figure - code mapping is the following :
 * Fig 1a, Fig 1e, Fig 1f : stim_figures.py
 * Fig 1b, Fig 1c : contrast_only.py
+* Fig 1d : contrast_only_correlation.py
 * Fig 1g, Fig 1h : **imported data from the MotionClouds project**
 * Fig 2b : bw_only.py
 * Fig 2c : bw_only_correlation.py

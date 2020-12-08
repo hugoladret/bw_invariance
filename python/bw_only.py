@@ -108,4 +108,9 @@ if plot_spike:
         plots.plot_spike_tc(ax = ax, 
                             all_spiketimes = out_spikes[i,:,:],
                             lab = labels[i], col = colors[i])
+    ax.legend(ncol = 1, fontsize = 14, frameon = True, title = r'B$_\theta$')
+    ax.set_xticks([-3, -1.5, 0, 1.5, 3])
+    ax.set_xticklabels(['-90', '-45', r'$\theta_{0}$', '+45', '+90'])
+    ax.tick_params(axis='both', labelsize=14)
+    ax.set_xlabel('Stimulation orientation (°)', fontsize = 18)
     fig.savefig('./figs/fig2b.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
