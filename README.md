@@ -2,26 +2,14 @@
 ## Can a contrast invariance model account for bandwidth invariance in the primary visual cortex ?
 ## Repository structure
 Code can be found under the ./python folder. The figure - code mapping is the following :
+* Fig 1a, Fig 1e, Fig 1f : stim_figures.py
+* Fig 1b, Fig 1c : contrast_only.py
+* Fig 1g, Fig 1h : **imported data from the MotionClouds project**
+* Fig 2b : bw_only.py
+* Fig 2c : bw_only_correlation.py
+* Fig 2d : bw_powerlaw.py
+* Fig 2e : bw_powerlaw_correlation.py
 
-
-## TODO :
-[X] Implement basic LIF simulation 
-
-[X] Implement grating-like curve stimulation 
-
-[X] Implement power-law rectification
-
-[X] Implement trial variability smoothing 
-
-[X] Reproduce contrast results, spikes
-
-[ ] Produce bandwidth results 
-
-[ ] Produce bandwidth + contrast results 
-
-[ ] (electrophy) analyze bandwidth/contrast results 
-
-[ ] translate to matlab 
 
 
 ## Project description
