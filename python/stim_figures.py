@@ -61,7 +61,7 @@ def generate_gratings(n_sins, imsize, div):
 fig, axs = plt.subplots(figsize = (16,8), ncols = len(B_thetas), nrows = 1,
                         gridspec_kw = {'wspace':0.01, 'hspace':0.05})
 
-theta = np.pi/4
+theta = np.pi/2
 N_X, N_Y = 512, 512
 
 for ibt in range(0,len(B_thetas)) :
@@ -79,7 +79,7 @@ for ibt in range(0,len(B_thetas)) :
         ax.spines[edge].set_color(colors[ibt])
         ax.spines[edge].set_linewidth(2)  
         
-fig.savefig('./figs/fig1e.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
+fig.savefig('./figs/fig2z.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
 
 
 # Generate the MotionClouds distributions (fig1e)

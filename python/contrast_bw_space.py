@@ -54,7 +54,7 @@ refrac_time = 1. # refractory period (msec)
 Vth = 1. # spike threshold (V)
 
 ## Stimulation parameters
-n_pars = 12 #number of parameters, either contrast or bandwidth
+n_pars = 6 #number of parameters, either contrast or bandwidth
 contrasts = np.linspace(1., 8., n_pars) #stimulation contrast, max = 5 is a good idea
 bandwidths = np.linspace(.3, .8, n_pars) # stimulation bandwidth, it's sigma of gaussian
 
@@ -66,7 +66,7 @@ scale = .5 # noise normal law var
 
 ## Bandwidth parameters
 k_bw = 3.5 # other neurons' power law scale
-a_bw = -4.5 # multiplier of bw on other neurons
+a_bw = -0 # multiplier of bw on other neurons
 
 ## Plotting parameters
 labels = bandwidths #rescale for actual stim values
@@ -129,33 +129,50 @@ for i0, max_amp in enumerate(contrasts) :
         
         
 fig, ax = plt.subplots(figsize = (8,6))
-im = ax.matshow(hwhhs, origin = 'lower')
-ax.set_xticklabels(np.round(np.concatenate(([0], contrasts)), 2))
-ax.set_yticklabels(np.round(np.concatenate(([0], bandwidths)), 2))
+im = ax.matshow(stim.scale_values(hwhhs, 1, 0), origin = 'lower')
+
+tickpos = np.arange(0, n_pars, 3)
+ax.set_xticks(tickpos)
+ax.set_yticks(tickpos)
+
+xlabs = stim.scale_values(contrasts, 1, 0)
+xlabs = np.round(xlabs, 2)
+ylabs = np.round(bandwidths, 2)
+ax.set_xticklabels(xlabs[tickpos])
+ax.set_yticklabels(ylabs[tickpos])
+
 ax.xaxis.set_ticks_position('bottom')
 
-ax.tick_params(axis='both', which='major', labelsize=12)
-ax.set_ylabel('Orientation bandwidth', fontsize = 14)
-ax.set_xlabel('Orientation contrast', fontsize = 14)
+ax.tick_params(axis='both', which='major', labelsize=14)
+ax.set_ylabel('Orientation bandwidth', fontsize = 18)
+ax.set_xlabel('Orientation contrast', fontsize = 18)
 
 cbar = fig.colorbar(im, ax = ax)
-cbar.set_label('Tuning curve bandwidth')
+cbar.set_label('Norm. tuning curve bandwidth', fontsize = 14)
 
 fig.savefig('./figs/fig3a.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
 
 
 # TC max
-fig, ax = plt.subplots(figsize = (8,6))
-im = ax.matshow(tcmaxs, origin = 'lower')
-ax.set_xticklabels(np.round(np.concatenate(([0], contrasts)), 2))
-ax.set_yticklabels(np.round(np.concatenate(([0], bandwidths)), 2))
-ax.xaxis.set_ticks_position('bottom')
+# fig, ax = plt.subplots(figsize = (8,6))
+# im = ax.matshow(tcmaxs, origin = 'lower')
+# tickpos = np.arange(0, n_pars, 2)
+# ax.set_xticks(tickpos)
+# ax.set_yticks(tickpos)
 
-ax.tick_params(axis='both', which='major', labelsize=12)
-ax.set_ylabel('Orientation bandwidth', fontsize = 14)
-ax.set_xlabel('Orientation contrast', fontsize = 14)
+# xlabs = stim.scale_values(contrasts, 1, 0)
+# xlabs = np.round(xlabs, 2)
+# ylabs = np.round(bandwidths, 2)
+# ax.set_xticklabels(xlabs[tickpos])
+# ax.set_yticklabels(ylabs[tickpos])
 
-cbar = fig.colorbar(im, ax = ax)
-cbar.set_label('Tuning curve amplitude')
+# ax.xaxis.set_ticks_position('bottom')
 
-fig.savefig('./figs/fig3b.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
+# ax.tick_params(axis='both', which='major', labelsize=14)
+# ax.set_ylabel('Orientation bandwidth', fontsize = 18)
+# ax.set_xlabel('Orientation contrast', fontsize = 18)
+
+# cbar = fig.colorbar(im, ax = ax)
+# cbar.set_label('Norm. tuning curve amplitudes', fontsize = 14)
+
+# fig.savefig('./figs/fig3b.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)

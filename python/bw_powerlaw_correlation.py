@@ -119,12 +119,12 @@ for i_bw, a_bw in enumerate(a_bws) :
     ax.plot(bandwidths, poly1d_fn(bandwidths), color = colors[i_bw],
             linestyle = '--', label = -a_bw)
 
-ax.legend(title = 'Exponant')
+ax.legend(title = 'Exponant', fontsize = 14)
 ax.spines['right'].set_visible(False)
 ax.spines['top'].set_visible(False)
 
-ax.tick_params(axis='both', which='major', labelsize=12)
-ax.set_ylabel('Orientation bandwidth', fontsize = 14)
-ax.set_xlabel('Tuning curve bandwidth', fontsize = 14)
+ax.tick_params(axis='both', which='major', labelsize=14)
+ax.set_ylabel('Orientation bandwidth', fontsize = 18)
+ax.set_xlabel('Tuning curve bandwidth', fontsize = 18)
 
 fig.savefig('./figs/fig2e.pdf' , format = 'pdf', dpi = 100, bbox_inches = 'tight', transparent = True)
